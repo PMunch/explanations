@@ -1,4 +1,4 @@
-## This module is intended as a way to decument return values, error messages,
+## This module is intended as a way to document return values, error messages,
 ## or other outcomes of calling a procedure, function, or macro in an in-line
 ## fashion. When writing good software it's crucial to properly document how it
 ## works, but how we do it is often error prone and can cause more harm than
@@ -8,7 +8,7 @@
 ## function that can return three different return values. To document this
 ## you've got a nice table in your documentation, a little something like this:
 ##
-## .. code-block::
+## .. code-block:: nim
 ##    func ourSuperFunc(value: int): int =
 ##      ## This procedure can return the following:
 ##      ## ===  ===============================================
