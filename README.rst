@@ -13,6 +13,7 @@ function that can return three different return values. To document this
 you've got a nice table in your documentation, a little something like this:
 
 .. code:: nim
+
    func ourSuperFunc(value: int): int =
      ## This procedure can return the following:
      ## ===  ===============================================
@@ -40,6 +41,7 @@ Macros
 ======
 
 .. code:: nim
+
   macro explained*(message: string, procDef: untyped): untyped
 
 The ``explained`` pragma can be attached to a procedure, a function, or a
@@ -49,6 +51,7 @@ the value ``repr``'ed and the explanation given. This means that we can
 rewrite the example above with:
 
 .. code::
+
    func ourSuperFunc(value: int): int
      {.explained: "This procedure can return the following:".} =
      case value:
@@ -58,6 +61,7 @@ rewrite the example above with:
        return expl(1, "The value passed in was medium (>100, < 10_000)")
      else:
        return expl(2, "The value passed in was high (>10_000)")
+
 While this doesn't completely remove the possibility of erroneous
 documentation, it at least brings the explanation closer to the actual
 value. Making it easier to spot and to change when the code is changed.
@@ -69,6 +73,7 @@ during execution. If you only want this output you must also pass
 docstring.
 
 .. code:: nim
+
   macro addExplanation*(explained: static[tuple[message, explained: string]], procDef: untyped): untyped
 
 Adds an explanation table and message from another procedure, the first
@@ -76,11 +81,13 @@ element in the explained tuple can be set to an extra message to put
 before the added table and message.
 
 .. code:: nim
+
   macro addExplanations*(explained: static[seq[tuple[message, explained: string]]], procDef: untyped): untyped
 
 Same as ``addExplanation`` but accepts a sequence of tables to add
 
 .. code:: nim
+
   macro mergeExplanations*(explained: static[seq[string]], procDef: untyped): untyped
 
 Takes a list of explained procedures and merges them with this procedures
@@ -91,6 +98,7 @@ Templates
 =========
 
 .. code:: nim
+
   template expl*(value: untyped, explanation: string): untyped {.used.}
 
 This template only exists to create an error when ``expl`` is used outside
